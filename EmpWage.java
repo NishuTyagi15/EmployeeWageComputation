@@ -7,16 +7,15 @@ public class EmpWage {
     public static final int EMPRATEPERHOUR = 20;
     public static final int WORKINGDAYS = 20;
     public static final int HRSINMONTH = 100;
-    public static void main (String[] args) {
-        System.out.println("Welcome to Employee Wage Computation Problem");
 
+    public static int compEmpWage() {
+        
         //Variables
-        int totalEmpWage = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+        int empHrs = 0, totalEmpWage = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 
         //Computation
         while (totalEmpHrs <= HRSINMONTH &&
                totalWorkingDays < WORKINGDAYS) {
-            int empHrs = 0;
             totalWorkingDays++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empCheck) {
@@ -30,12 +29,14 @@ public class EmpWage {
                     empHrs = 0;
             }
             totalEmpHrs += empHrs;
-            int empWage = empHrs * EMPRATEPERHOUR;
-            totalEmpWage += empWage;
-            System.out.println("Employee Wage is : " +empWage);
+            System.out.println("Employee Working Days : " +totalWorkingDays + 
+                                "     Employee Working Hours : " +totalEmpHrs);
         }
+        totalEmpWage = totalEmpHrs + EMPRATEPERHOUR;
         System.out.println("Total Employee Wage is : " +totalEmpWage);
-        System.out.println("Total Working Days : " + totalWorkingDays + 
-           " TotalEmployee Hours : " + totalEmpHrs);
+        return totalEmpWage;
+    }
+    public static void main (String[] args) {
+        compEmpWage();
     }
 }
