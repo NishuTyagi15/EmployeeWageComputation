@@ -5,8 +5,23 @@ public class EmpWage {
     public static final int PARTTIME = 1;
     public static final int FULLTIME = 2;
 
-    public static int multiCompanyEmpWage(String company, int empRatePerHour, int numberOfWorkingDays, 
+    public final String company;
+    public final int empRatePerHour;
+    public final int numberOfWorkingDays;
+    public final int hrsPerMonth;
+    public int totalEmpWage;    
+    
+    public EmpWage(String company, int empRatePerHour, int numberOfWorkingDays, 
                                             int hrsPerMonth) {
+        
+        this.company = company;
+        this.empRatePerHour = empRatePerHour;
+        this.numberOfWorkingDays = numberOfWorkingDays;
+        this.hrsPerMonth = hrsPerMonth;
+
+    }
+
+    public void empWageComputation() {
         
         //Variables
         int empHrs = 0, totalEmpWage = 0, totalEmpHrs = 0, totalWorkingDays = 0;
@@ -31,14 +46,24 @@ public class EmpWage {
                                 "     Employee Working Hours : " +totalEmpHrs);
         }
         totalEmpWage = totalEmpHrs + empRatePerHour;
-        System.out.println("Total Employee Wage for " +company+ " Company is : " +totalEmpWage);
-        return totalEmpWage;
+    }
+
+    @Override
+    public String toString() {
+        return "Total Employee Wage for " +company+ " Company is : " +totalEmpWage;
     }
     public static void main (String[] args) {
-        multiCompanyEmpWage("TCS", 20, 1, 10);
-        multiCompanyEmpWage("Infosys", 10, 2, 20);
-        multiCompanyEmpWage("Wipro", 10, 3, 20);
-        multiCompanyEmpWage("Magic edTech", 20, 4, 10);
-
+        EmpWage TCS = new EmpWage("TCS", 20, 1, 10);
+        EmpWage Infosys = new EmpWage("Infosys", 10, 2, 20);
+        EmpWage Wipro = new EmpWage("Wipro", 10, 3, 20);
+        EmpWage Magic = new EmpWage("Magic edTech", 20, 4, 10);
+        TCS.empWageComputation();
+        System.out.println(TCS);
+        Infosys.empWageComputation();
+        System.out.println(Infosys);
+        Wipro.empWageComputation();
+        System.out.println(Wipro);
+        Magic.empWageComputation();
+        System.out.println(Magic);
     }
 }
