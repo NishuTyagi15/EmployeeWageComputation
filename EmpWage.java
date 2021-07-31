@@ -5,11 +5,11 @@ public class EmpWage {
     public static final int PARTTIME = 1;
     public static final int FULLTIME = 2;
 
-    public final String company;
-    public final int empRatePerHour;
-    public final int numberOfWorkingDays;
-    public final int hrsPerMonth;
-    public int totalEmpWage;    
+    private final String company;
+    private final int empRatePerHour;
+    private final int numberOfWorkingDays;
+    private final int hrsPerMonth;
+    private int totalEmpWage;    
     
     public EmpWage(String company, int empRatePerHour, int numberOfWorkingDays, 
                                             int hrsPerMonth) {
@@ -24,7 +24,7 @@ public class EmpWage {
     public void empWageComputation() {
         
         //Variables
-        int empHrs = 0, totalEmpWage = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+        int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 
         //Computation
         while (totalEmpHrs <= hrsPerMonth &&
@@ -46,6 +46,7 @@ public class EmpWage {
                                 "     Employee Working Hours : " +totalEmpHrs);
         }
         totalEmpWage = totalEmpHrs + empRatePerHour;
+
     }
 
     @Override
