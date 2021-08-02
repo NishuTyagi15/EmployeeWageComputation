@@ -1,35 +1,43 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class EmpWageArray {
 
     public static final  int partTime = 1;
     public static final int fullTime = 2;
 
     private int numOfCompanies=0;
-    private EmpWage[] empWageArray;
-
-
+    private ArrayList<EmpWage> empWageList;
+    private Map<String, EmpWage> empWageMap;
+    
     public EmpWageArray() {
-
-	    empWageArray = new EmpWage[5];
-	 
+        empWageList = new ArrayList<>();
+        empWageMap = new HashMap<>();
     }
  
     private void addEmpWage (String company, int empRatePerHour, int numberOfWorkingDays, int hrsPerMonth) {
 	 
-	    empWageArray[numOfCompanies]= new EmpWage(company, empRatePerHour, numberOfWorkingDays, hrsPerMonth);
-	        numOfCompanies ++;
+	    EmpWage empWage= new EmpWage(company, empRatePerHour, numberOfWorkingDays, hrsPerMonth);
+	    empWageList.add(empWage);
+        empWageMap.put(company, empWage);
 	 
     }
 
+    public void empWageComputation() {
 	
-    private void empWageComputation() {
-	
-	    for(int i=0; i < numOfCompanies; i++) {
-	        empWageArray[i].setTotalEmpWage(this.empWageComputation(empWageArray[i]));
-	        System.out.println(empWageArray[i]);	
+	    for(int i=0; i < empWageList.size(); i++) {
+            EmpWage empWage = empWageList.get(i);
+	        empWage.setTotalEmpWage(this.empWageComputation(empWage));
+	        System.out.println(empWage);	
 	    }        
     }
 
-    private int empWageComputation(EmpWage empWage) {
+    public int getTotalWage(String company) {
+        return empWageMap.get(company).totalEmpWage;
+    }
+
+    public int empWageComputation(EmpWage empWage) {
 
         //Variables
         int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
