@@ -73,6 +73,9 @@ public class EmpWageArray {
         empWageBuilder.addEmpWage("Wipro", 15, 2, 20);
         empWageBuilder.addEmpWage("Magic edTech", 20, 2, 10);
         empWageBuilder.empWageComputation();
-
+        System.out.println("Total Wage for TCS : " +empWageBuilder.getTotalWage("TCS"));
+        System.out.println("Total Wage for Infosys : " +empWageBuilder.getTotalWage("Infosys"));
+        System.out.println("Total Wage for Wipro : " +empWageBuilder.getTotalWage("Wipro"));
+        System.out.println("Total Wage for Magic edTech : " +empWageBuilder.getTotalWage("Magic edTech"));
     }
 }
